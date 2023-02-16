@@ -1,0 +1,136 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <script src="call_api.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/jquery-3.6.3.min.js"></script>
+</head>
+
+<body>
+    <div class="row text-primary">
+        <!-- 导航栏 -->
+        <div class="col-3">
+            <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sticky-top">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="#bp_chrome">bp_chrome</a>
+                    <a class="nav-link" href="#dirsearch">dirsearch</a>
+                    <a class="nav-link" href="#sqlmap">sqlmap</a>
+                    <a class="nav-link" href="#flask_session_cookie_manager">flask_session_cookie_manager</a>
+                </nav>
+            </nav>
+        </div>
+        <div class="col-8">
+            <div class="container text-center mt-5" id="bp_chrome">
+                <button onclick="pywebview.api.bp_chrome()" class="btn btn-outline-primary">启动 bp 和 chrome</button>
+            </div>
+            <hr>
+            <div class="container text-center" id="dirsearch">
+                <h3>dirsearch</h3>
+                <div>
+                    <input id="dirsearch_u" placeholder="url" class="enter">
+                </div>
+                <button onclick="dirsearch()" class="btn btn-outline-primary mt-2 mb-2">启动 dirsearch</button>
+                <br>
+                <textarea id="dirsearch_r" placeholder="详细命令行" rows="2" cols="75" class="form-control"></textarea>
+            </div>
+            <hr>
+            <div class="container text-center" id="sqlmap">
+                <h3>sqlmap</h3>
+                <mark>注：输入不能带有引号</mark>
+                <br>
+                <select id="sqlmap_v" class="mt-2">
+                    <option value="">---选择详细输出---</option>
+                    <option value="2">2 显示 debug</option>
+                    <option value="3">3 显示 payload</option>
+                    <option value="4">4 显示 请求头</option>
+                    <option value="5">5 显示 响应头</option>
+                    <option value="6">6 显示 响应体</option>
+                </select>
+                <div>目标：
+                    <input id="sqlmap_u" placeholder="url" class="enter long" value="">
+                    <input id="sqlmap_m" placeholder="urls.txt" class="enter long" value="">
+                    <input id="sqlmap_r" placeholder="请求文件" class="enter long" value="">
+                </div>
+                <div>请求：
+                    <input id="sqlmap_H" placeholder="指定请求头" class="enter long" value="">
+                    <input id="sqlmap_data" placeholder="post 参数" class="enter long" value="">
+                    <input id="sqlmap_cookie" placeholder="cookie" class="enter long" value="">
+                    <label><input type="checkbox" id="sqlmap_random_agent" class="form-check-input"> 随机 UA</label>
+                    <select id="sqlmap_proxy">
+                        <option value="">-----选择代理-----</option>
+                        <option value="http://127.0.0.1:8080">http://127.0.0.1:8080</option>
+                    </select>
+                    <label><input type="checkbox" id="sqlmap_skip_urlencode" class="form-check-input"> 跳过 url 编码</label>
+                </div>
+                <div>优化：
+                    <label><input type="checkbox" id="sqlmap_o" class="form-check-input"> 开启四个优化选项</label>
+                </div>
+                <div>注入：
+                    <input id="sqlmap_tamper" placeholder="tamper 脚本" class="enter" value="">
+                </div>
+                <div>检测：
+                    <input id="sqlmap_string" placeholder="判断成功的字符串" class="enter" value="">
+                    <select id="sqlmap_level">
+                        <option value="">----------选择 level----------</option>
+                        <option value="2">level2：增加 cookie 注入</option>
+                        <option value="3">level3：增加 UA，referer 注入</option>
+                        <option value="5">level5</option>
+                    </select>
+                </div>
+                <div>技术：
+                    <select id="sqlmap_technique">
+                        <option value="">---选择注入技术---</option>
+                        <option value="B">布尔盲注</option>
+                        <option value="U">联合查询</option>
+                        <option value="E">报错注入</option>
+                        <option value="S">堆叠注入</option>
+                        <option value="T">时间盲注</option>
+                        <option value="Q">嵌套注入（子查询）</option>
+                    </select>
+                </div>
+                <div>枚举：
+                    <label><input type="checkbox" id="sqlmap_current_user" class="form-check-input"> 当前用户</label>
+                    <label><input type="checkbox" id="sqlmap_dbs" class="form-check-input"> 数据库</label>
+                    <label><input type="checkbox" id="sqlmap_tables" class="form-check-input"> 表</label>
+                    <label><input type="checkbox" id="sqlmap_columns" class="form-check-input"> 列</label>
+                    <label><input type="checkbox" id="sqlmap_dump" class="form-check-input"> 下载数据</label>
+                    <input id="sqlmap_D" placeholder="指定数据库" class="enter" value="">
+                    <input id="sqlmap_T" placeholder="指定表" class="enter" value="">
+                    <input id="sqlmap_C" placeholder="指定列" class="enter" value="">
+                    <label><input type="checkbox" id="sqlmap_sql_shell" class="form-check-input"> sql shell</label>
+                </div>
+                <div>一般设置：
+                    <label><input type="checkbox" id="sqlmap_batch" class="form-check-input"> 使用默认选择</label>
+                </div>
+                <div>杂项：
+                    <label><input type="checkbox" id="sqlmap_list_tampers" class="form-check-input"> 列出可用 tamper 脚本</label>
+                    <label><input type="checkbox" id="sqlmap_purge" class="form-check-input">清理缓存</label>
+                    <label><input type="checkbox" id="sqlmap_shell" class="form-check-input"> sqlmap shell</label>
+                    <label><input type="checkbox" id="sqlmap_update" class="form-check-input"> 更新</label>
+                </div>
+                <button onclick="sqlmap()" class="btn btn-outline-primary  mt-2 mb-2">启动 sqlmap</button>
+                <br>
+                <textarea id="sqlmap_res" placeholder="详细命令行" rows="3" cols="75" class="form-control"></textarea>
+            </div>
+            <hr>
+            <div class="container text-center" id="flask_session_cookie_manager">
+                <h3>flask_session_cookie_manager</h3>
+                <div>
+                    <input id="flask_text" placeholder="session 或者要编码的字典（单引号）" class="enter long">
+                    <input id="flask_key" placeholder="key" class="enter">
+                </div>
+                <button onclick="flask_decode()" class="btn btn-outline-primary  mt-2 mb-2">解码</button>
+                <button onclick="flask_encode()" class="btn btn-outline-primary  mt-2 mb-2">编码</button>
+                <br>
+                <textarea id="flask_decode_res" placeholder="解码命令行" rows="2" cols="75" class="form-control"></textarea>
+                <textarea id="flask_encode_res" placeholder="编码命令行" rows="2" cols="75" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

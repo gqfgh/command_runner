@@ -1,0 +1,22 @@
+hr {
+    border-top: 3px solid rgb(70, 135, 227);
+}
+
+input.enter {
+    margin: 5px 0px 5px;
+    width: 200px;
+    border-radius: 8px;
+    border-width: 3px;
+    line-height: 2;
+    text-align: center;
+    font-size: 14px;
+}
+
+input.long {
+    /* 更长的 input */
+    width: 400px;
+}
+
+label {
+    color: black;
+}
