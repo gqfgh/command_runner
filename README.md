@@ -4,3 +4,7 @@
 前端：HTML + CSS（bootstrap）+ JS（调用 API）
 
 后端：Python（提供 API，启动 webview）
+
+展示如下：
+
+<img src="./static/GUI.png">
