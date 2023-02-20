@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container text-primary text-center">
+    <div class="container">
         <div class="row">
             <!-- 导航栏 -->
             <div class="col-4">
@@ -25,7 +25,7 @@
                 </nav>
             </div>
 
-            <div class="col-8">
+            <div class="col-8  text-primary text-center">
                 <div class="mt-2" id="bp_chrome">
                     <button onclick="pywebview.api.bp_chrome()" class="btn btn-outline-primary">启动 bp 和 chrome</button>
                 </div>
@@ -63,7 +63,7 @@
                             <input id="sqlmap_g" placeholder="处理谷歌搜索结果" class="form-control">
                         </div>
                         <div class="col-6">请求
-                            <input id="sqlmap_H" placeholder="指定请求头" class="form-control">
+                            <input id="sqlmap_H" placeholder="请求头" class="form-control">
                             <input id="sqlmap_data" placeholder="post 参数" class="form-control">
                             <input id="sqlmap_cookie" placeholder="cookie" class="form-control">
                             <label><input type="checkbox" id="sqlmap_random_agent" class="form-check-input"> 随机 UA</label>
@@ -127,12 +127,12 @@
                     </div>
 
                     <div>一般设置
-                        <label><input type="checkbox" id="sqlmap_batch" class="form-check-input">batch</label>
+                        <label><input type="checkbox" id="sqlmap_batch" class="form-check-input"> batch</label>
                     </div>
 
                     <div>杂项：
                         <label><input type="checkbox" id="sqlmap_list_tampers" class="form-check-input"> 列出可用 tamper 脚本</label>
-                        <label><input type="checkbox" id="sqlmap_purge" class="form-check-input">清理缓存</label>
+                        <label><input type="checkbox" id="sqlmap_purge" class="form-check-input"> 清理缓存</label>
                         <label><input type="checkbox" id="sqlmap_shell" class="form-check-input"> sqlmap shell</label>
                         <label><input type="checkbox" id="sqlmap_update" class="form-check-input"> 更新</label>
                     </div>
