@@ -22,6 +22,9 @@ function sqlmap() {
     var proxy = sqlmap_proxy.value;
     var v = sqlmap_v.value;
     var m = sqlmap_m.value;
+    var g = sqlmap_g.value;
+    var second_url = sqlmap_second_url.value;
+    var dbms = sqlmap_dbms.value;
 
     var batch = sqlmap_batch.checked;
     var dbs = sqlmap_dbs.checked;
@@ -38,7 +41,7 @@ function sqlmap() {
     var list_tampers = sqlmap_list_tampers.checked;
     var purge = sqlmap_purge.checked;
 
-    pywebview.api.sqlmap(u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m).then((response) => {
+    pywebview.api.sqlmap(u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms).then((response) => {
         sqlmap_res.innerHTML = response;
     });
 }

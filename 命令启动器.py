@@ -4,7 +4,7 @@ from urllib.parse import quote
 import webview
 
 
-def add_quotation_mark(string: str):
+def add_quotation_mark(string: str) -> str:
     # 如果包含单引号，用双引号包裹；反之用单引号
     if "'" in string: return f'"{string}"'
     else: return f"'{string}'"
@@ -16,13 +16,13 @@ class JSApi:
         chrome = 'chrome'
         os.system(f'{bp} & {chrome}')
 
-    def dirsearch(self, u):
+    def dirsearch(self, u: str) -> str:
         command = "dirsearch "
         if u != '': command += f'-u {u} '
         os.system(f'start powershell -command "{command};pause"')
         return command
 
-    def sqlmap(self, u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m):
+    def sqlmap(self, u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms):
         global command
         command = "py310 'D:\security tool\web渗透工具\sqlmap\sqlmap.py' "
 
@@ -57,6 +57,9 @@ class JSApi:
             if purge == True: command += '--purge '
             if v != '': command += f'-v {v} '
             if m != '': command += f'-m {m} '
+            if g != '': command += f'-g {g} '
+            if second_url != '': command += f'--second-url {second_url} '
+            if dbms != '': command += f'--dbms {dbms} '
 
         add_args()
         os.system(f'start powershell -command "{command};pause"')
@@ -85,5 +88,6 @@ window = webview.create_window(
     zoomable=True,  # 开启缩放
     min_size=(1900, 1000)
 )
+
 if __name__ == '__main__':
     webview.start(debug=False)
