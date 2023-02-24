@@ -34,7 +34,7 @@
 
                 <div class="container" id="dirsearch">
                     <h3>dirsearch</h3>
-                    <input id="dirsearch_u" placeholder="url" class="form-control w-50">
+                    <input id="dirsearch_u" title="url" placeholder="url" class="form-control w-50">
                     <button onclick="dirsearch()" class="btn btn-outline-primary mt-2 mb-2">启动 dirsearch</button>
                     <br>
                     <textarea id="dirsearch_r" placeholder="详细命令行" class="form-control"></textarea>
@@ -57,16 +57,37 @@
 
                     <div class="row">
                         <div class="col-6">目标
-                            <input id="sqlmap_u" placeholder="url" class="form-control">
-                            <input id="sqlmap_m" placeholder="urls.txt" class="form-control">
-                            <input id="sqlmap_r" placeholder="请求文件" class="form-control">
-                            <input id="sqlmap_g" placeholder="处理谷歌搜索结果" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-text">url</span>
+                                <input id="sqlmap_u" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">urls.txt</span>
+                                <input id="sqlmap_m" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">请求文件</span>
+                                <input id="sqlmap_r" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">谷歌搜索</span>
+                                <input id="sqlmap_g" class="form-control">
+                            </div>
                         </div>
                         <div class="col-6">请求
-                            <input id="sqlmap_H" placeholder="请求头" class="form-control">
-                            <input id="sqlmap_data" placeholder="post 参数" class="form-control">
-                            <input id="sqlmap_cookie" placeholder="cookie" class="form-control">
-                            <label><input type="checkbox" id="sqlmap_random_agent" class="form-check-input"> 随机 UA</label>
+                            <div class="input-group">
+                                <span class="input-group-text">请求头</span>
+                                <input id="sqlmap_H" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">post 参数</span>
+                                <input id="sqlmap_data" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">cookie</span>
+                                <input id="sqlmap_cookie" class="form-control">
+                            </div>
+                            <label><input type="checkbox" id="sqlmap_random_agent" class="form-check-input" checked> 随机 UA</label>
                             <select id="sqlmap_proxy" class="form-select text-center">
                                 <option value="">代理</option>
                                 <option value="http://127.0.0.1:7890">本地 7890</option>
@@ -77,18 +98,31 @@
                     </div>
 
                     <div>优化：
-                        <label><input type="checkbox" id="sqlmap_o" class="form-check-input"> 开启四个优化选项</label>
+                        <label><input type="checkbox" id="sqlmap_o" class="form-check-input" checked> 开启优化</label>
+                        <select id="sqlmap_threads" class="form-select text-center">
+                            <option value="">选择线程</option>
+                            <option value="10">10 线程</option>
+                        </select>
                     </div>
 
                     <div class="row mt-2">
                         <div class="col-6">注入
                             <br>
-                            <input id="sqlmap_dbms" placeholder="数据库类型" class="form-control">
-                            <input id="sqlmap_tamper" placeholder="tamper 脚本" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-text">数据库类型</span>
+                                <input id="sqlmap_dbms" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">tamper 脚本</span>
+                                <input id="sqlmap_tamper" class="form-control">
+                            </div>
                         </div>
                         <div class="col-6">检测
                             <br>
-                            <input id="sqlmap_string" placeholder="判断成功的字符串" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-text">判断成功的字符串</span>
+                                <input id="sqlmap_string" class="form-control">
+                            </div>
                             <select id="sqlmap_level" class="form-select text-center">
                                 <option value="">level</option>
                                 <option value="2">level2：增加 cookie 注入</option>
@@ -110,27 +144,40 @@
                                 <option value="T">时间盲注</option>
                                 <option value="Q">嵌套注入（子查询）</option>
                             </select>
-                            <input id="sqlmap_second_url" placeholder="二次注入显示结果的 url" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-text">二次注入获取结果</span>
+                                <input id="sqlmap_second_url" class="form-control">
+                            </div>
                         </div>
                         <div class="col-6">枚举
                             <br>
                             <label><input type="checkbox" id="sqlmap_current_user" class="form-check-input"> 当前用户</label>
-                            <label><input type="checkbox" id="sqlmap_dbs" class="form-check-input"> 数据库</label>
-                            <label><input type="checkbox" id="sqlmap_tables" class="form-check-input"> 表</label>
-                            <label><input type="checkbox" id="sqlmap_columns" class="form-check-input"> 列</label>
+                            <label><input type="checkbox" id="sqlmap_dbs" class="form-check-input"> 所有库</label>
+                            <label><input type="checkbox" id="sqlmap_tables" class="form-check-input"> 所有表</label>
+                            <label><input type="checkbox" id="sqlmap_columns" class="form-check-input"> 所有列</label>
                             <label><input type="checkbox" id="sqlmap_dump" class="form-check-input"> 下载数据</label>
-                            <input id="sqlmap_D" placeholder="指定数据库" class="form-control">
-                            <input id="sqlmap_T" placeholder="指定表" class="form-control">
-                            <input id="sqlmap_C" placeholder="指定列" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-text">指定库</span>
+                                <input id="sqlmap_D" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">指定表</span>
+                                <input id="sqlmap_T" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">指定列</span>
+                                <input id="sqlmap_C" class="form-control">
+                            </div>
                             <label><input type="checkbox" id="sqlmap_sql_shell" class="form-check-input"> sql shell</label>
                         </div>
                     </div>
 
                     <div>一般设置
-                        <label><input type="checkbox" id="sqlmap_batch" class="form-check-input"> batch</label>
+                        <label><input type="checkbox" id="sqlmap_batch" class="form-check-input" checked> batch</label>
+                        <label><input type="checkbox" id="sqlmap_forms" class="form-check-input"> 解析表单</label>
                     </div>
 
-                    <div>杂项：
+                    <div class="mt-2">杂项：
                         <label><input type="checkbox" id="sqlmap_list_tampers" class="form-check-input"> 列出可用 tamper 脚本</label>
                         <label><input type="checkbox" id="sqlmap_purge" class="form-check-input"> 清理缓存</label>
                         <label><input type="checkbox" id="sqlmap_shell" class="form-check-input"> sqlmap shell</label>

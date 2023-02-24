@@ -2,7 +2,7 @@ hr {
     border-top: 3px solid rgb(70, 135, 227);
 }
 
-input {
+input,span {
     margin: auto;
     margin-top: 10px;
     text-align: center;

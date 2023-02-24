@@ -1,3 +1,8 @@
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 function dirsearch() {
     var u = dirsearch_u.value;
 
@@ -25,6 +30,7 @@ function sqlmap() {
     var g = sqlmap_g.value;
     var second_url = sqlmap_second_url.value;
     var dbms = sqlmap_dbms.value;
+    var threads = sqlmap_threads.value;
 
     var batch = sqlmap_batch.checked;
     var dbs = sqlmap_dbs.checked;
@@ -40,8 +46,9 @@ function sqlmap() {
     var update = sqlmap_update.checked;
     var list_tampers = sqlmap_list_tampers.checked;
     var purge = sqlmap_purge.checked;
+    var forms = sqlmap_forms.checked;
 
-    pywebview.api.sqlmap(u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms).then((response) => {
+    pywebview.api.sqlmap(u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms, threads, forms).then((response) => {
         sqlmap_res.innerHTML = response;
     });
 }
