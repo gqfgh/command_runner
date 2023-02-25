@@ -51,7 +51,7 @@
                 <div class="container" id="sqlmap" ondblclick="sqlmap()">
                     <h3>sqlmap</h3>
                     <select id="sqlmap_v" class="mt-2 mb-4 form-select text-center">
-                        <option value="">详细输出</option>
+                        <option value="">选择输出详细度</option>
                         <option value="2">2 显示 debug</option>
                         <option value="3">3 显示 payload</option>
                         <option value="4">4 显示 请求头</option>
@@ -80,9 +80,9 @@
                         </div>
                         <div class="col-6">请求
                             <select id="sqlmap_proxy" class="form-select text-center">
-                                <option value="">代理</option>
-                                <option value="http://127.0.0.1:7890">本地 7890</option>
-                                <option value="http://127.0.0.1:8080">本地 8080</option>
+                                <option value="">选择代理</option>
+                                <option value="http://127.0.0.1:7890">本地 7890 代理</option>
+                                <option value="http://127.0.0.1:8080">本地 8080 代理</option>
                             </select>
                             <label><input type="checkbox" id="sqlmap_random_agent" class="form-check-input" checked> 随机 UA</label>
                             <label><input type="checkbox" id="sqlmap_skip_urlencode" class="form-check-input"> 跳过 url 编码</label>
@@ -110,11 +110,10 @@
                             <label><input type="checkbox" id="sqlmap_o" class="form-check-input" checked> 开启优化</label>
                         </div>
                         <div class="col-6">注入
-                            <br>
-                            <div class="input-group">
-                                <span class="input-group-text">数据库类型</span>
-                                <input id="sqlmap_dbms" class="form-control">
-                            </div>
+                            <select id="sqlmap_dbms" class="form-select text-center">
+                                <option value="">选择数据库类型</option>
+                                <option value="mysql">mysql</option>
+                            </select>
                             <div class="input-group">
                                 <span class="input-group-text">tamper 脚本</span>
                                 <input id="sqlmap_tamper" class="form-control">
@@ -125,7 +124,7 @@
                     <div class="row mt-2">
                         <div class="col-6">检测
                             <select id="sqlmap_level" class="form-select text-center">
-                                <option value="">level</option>
+                                <option value="">选择 level</option>
                                 <option value="2">level2：增加 cookie 注入</option>
                                 <option value="3">level3：增加 UA，referer 注入</option>
                                 <option value="5">level5</option>
@@ -138,7 +137,7 @@
                         <div class="col-6">技术
                             <br>
                             <select id="sqlmap_technique" class="form-select text-center">
-                                <option value="">注入技术</option>
+                                <option value="">选择注入技术</option>
                                 <option value="B">布尔盲注</option>
                                 <option value="U">联合查询</option>
                                 <option value="E">报错注入</option>
