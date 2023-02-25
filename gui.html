@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <!-- 导航栏 -->
-            <div class="col-4">
+            <div class="col-3">
                 <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sticky-top">
                     <a class="navbar-brand" href="#">Navbar</a>
                     <nav class="nav nav-pills flex-column">
@@ -25,7 +25,7 @@
                 </nav>
             </div>
 
-            <div class="col-8  text-primary text-center">
+            <div class="col-9 text-primary text-center">
                 <div class="mt-2" id="bp_chrome">
                     <button onclick="pywebview.api.bp_chrome()" class="btn btn-outline-primary">启动 bp 和 chrome</button>
                 </div>
@@ -177,10 +177,10 @@
                         <label><input type="checkbox" id="sqlmap_forms" class="form-check-input"> 解析表单</label>
                     </div>
 
-                    <div class="mt-2">杂项：
+                    <div class="mt-2">杂项
                         <div class="input-group">
                             <span class="input-group-text">alert</span>
-                            <input id="sqlmap_alert" class="form-control" value="py310 D:\24172\Documents\code\命令启动器\static\sqlmap_toast.py">
+                            <input id="sqlmap_alert" class="form-control" value="python D:\24172\Documents\code\命令启动器\static\sqlmap_toast.py">
                         </div>
                         <label><input type="checkbox" id="sqlmap_list_tampers" class="form-check-input"> 列出可用 tamper 脚本</label>
                         <label><input type="checkbox" id="sqlmap_purge" class="form-check-input"> 清理缓存</label>
