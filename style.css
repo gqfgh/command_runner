@@ -2,10 +2,9 @@ hr {
     border-top: 3px solid rgb(70, 135, 227);
 }
 
-input,span {
-    margin: auto;
-    margin-top: 10px;
-    text-align: center;
+div.input-group {
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
 }
 
 
@@ -18,11 +17,4 @@ select {
     width: auto!important;
     margin: auto;
     margin-top: 10px;
-}
-
-textarea {
-    width: 75%!important;
-    margin: auto!important;
-    margin-top: 10px!important;
-    text-align: center;
 }
