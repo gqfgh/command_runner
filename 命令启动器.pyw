@@ -11,7 +11,7 @@ def add_quotation_mark(string: str) -> str:
 
 class JSApi:
     def bp_chrome(self):
-        bp = 'bp.bat'
+        bp = 'bp.pyw'
         chrome = 'chrome'
         os.system(f'{bp} & {chrome}')
 
@@ -22,7 +22,7 @@ class JSApi:
         return command
 
     def sqlmap(self, u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms, threads, forms, alert):
-        command = "py310 'D:\security tool\web渗透工具\sqlmap\sqlmap.py' "
+        command = "python 'D:\security tool\web渗透工具\sqlmap\sqlmap.py' "
 
         maps = {
             '-u': u, '-r': r, '--batch': batch, '--dbs': dbs, '-D': D, '--tables': tables,
@@ -50,14 +50,14 @@ class JSApi:
         return command
 
     def flask_decode(self, c, s):
-        command = r"py310 'D:/security tool/web渗透工具/flask-session-cookie-manager/flask_session_cookie_manager3.py' decode "
+        command = r"python 'D:/security tool/web渗透工具/flask-session-cookie-manager/flask_session_cookie_manager3.py' decode "
         if c != '': command += f'-c {c} '
         if s != '': command += f'-s {s} '
         os.system(f'start powershell -command "{command};pause"')
         return command
 
     def flask_encode(self, t, s):
-        command = r"py310 'D:\security tool\web渗透工具\flask-session-cookie-manager\flask_session_cookie_manager3.py' encode "
+        command = r"python 'D:\security tool\web渗透工具\flask-session-cookie-manager\flask_session_cookie_manager3.py' encode "
         if t != '': command += f'-t "{t}" '
         if s != '': command += f'-s {s} '
         os.system(f'start powershell -command "{command};pause"')
