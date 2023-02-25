@@ -1,1 +1,0 @@
-powershell -windowstyle hidden -command "py310 ../ÃüÁîÆô¶¯Æ÷.py" 
