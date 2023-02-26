@@ -4,7 +4,7 @@ import webview
 
 
 def add_quotation_mark(string: str) -> str:
-    # 如果包含单引号，用双引号包裹；反之用单引号
+    '''如果包含单引号，用双引号包裹；反之用单引号'''
     if "'" in string:
         return f'"{string}"'
     else:
@@ -17,13 +17,10 @@ def add_args(maps: dict) -> str:
         match value:
             case False | '':
                 pass
-            # 没有值的参数，布尔型
-            case True:
+            case True:  # true 直接加 key
                 args += f'{key} '
-            # 有值的参数，字符串
-            case value:
-                # 数字不加引号
-                if not value.isdigit():
+            case value:  # 非空字符串需要处理引号
+                if not value.isdigit():  # 数字不加引号
                     value = add_quotation_mark(value)
                 args += f'''{key} {value} '''
     return args
@@ -42,7 +39,7 @@ class JSApi:
     def dirsearch(self, u: str) -> str:
         command = "dirsearch "
         maps = {
-            '-u':u
+            '-u': u
         }
         command += add_args(maps)
         run_command(command)

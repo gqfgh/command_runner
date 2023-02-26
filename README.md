@@ -18,4 +18,4 @@
 
 # 注意事项
 - Python >= 3.10，因为使用了 match-case
-- 部分参数默认开启，如 sqlmap 的 --batch，修改请移步 gui.html
+- 部分参数默认开启，如 sqlmap 的 --batch，修改请移步 gui.html，将对应参数的 checked 删除即可关闭
