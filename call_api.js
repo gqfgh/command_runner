@@ -1,7 +1,8 @@
 function dirsearch() {
     var u = dirsearch_u.value;
+    var e = dirsearch_e.value;
 
-    pywebview.api.dirsearch(u).then((response) => {
+    pywebview.api.dirsearch(u, e).then((response) => {
         dirsearch_r.innerHTML = response;
     });
 }

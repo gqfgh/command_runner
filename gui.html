@@ -38,6 +38,10 @@
                         <span class="input-group-text">url</span>
                         <input id="dirsearch_u" class="form-control">
                     </div>
+                    <div class="input-group">
+                        <span class="input-group-text">后缀</span>
+                        <input id="dirsearch_e" placeholder="php, aspx, jsp, html, js" class="form-control">
+                    </div>
                     <button onclick="dirsearch()" class="btn btn-outline-primary mt-2 mb-2">启动 dirsearch</button>
                     <br>
                     <div class="input-group">
@@ -192,7 +196,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button onclick="sqlmap()" class="btn btn-outline-primary  mt-2 mb-2">启动 sqlmap</button>
                     <br>
                     <div class="input-group">
@@ -205,13 +209,16 @@
 
                 <div class="container text-center" id="flask_session_cookie_manager">
                     <h3>flask_session_cookie_manager</h3>
-                    <div>
-                        <input id="flask_text" placeholder="session 或者要编码的字典（单引号）" class="form-control w-75">
-                        <input id="flask_key" placeholder="key" class="form-control w-75">
+                    <div class="input-group">
+                        <span class="input-group-text">session 或者要编码的字典</span>
+                        <input id="flask_text" class="form-control w-75">
                     </div>
-
-                    <button onclick="flask_decode()" class="btn btn-outline-primary  mt-2 mb-2">解码</button>
-                    <button onclick="flask_encode()" class="btn btn-outline-primary  mt-2 mb-2">编码</button>
+                    <div class="input-group">
+                        <span class="input-group-text">key</span>
+                        <input id="flask_key" class="form-control w-75">
+                    </div>
+                    <button onclick="flask_decode()" class="btn btn-outline-primary mt-2 mb-2">解码</button>
+                    <button onclick="flask_encode()" class="btn btn-outline-primary mt-2 mb-2">编码</button>
                     <br>
                     <div class="input-group">
                         <span class="input-group-text">解码命令</span>
@@ -225,6 +232,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

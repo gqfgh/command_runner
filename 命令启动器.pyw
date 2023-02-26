@@ -36,12 +36,14 @@ class JSApi:
         chrome = 'chrome'
         os.system(f'{bp} & {chrome}')
 
-    def dirsearch(self, u: str) -> str:
+    def dirsearch(self, u: str, e: str) -> str:
         command = "dirsearch "
         maps = {
-            '-u': u
+            '-u': u, '-e': e
         }
         command += add_args(maps)
+        # 指定默认字典
+        command += '-w D:/安全工具/web渗透工具/字典/web目录.txt'
         run_command(command)
         return command
 
