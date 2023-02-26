@@ -7,8 +7,8 @@
 
 后端：Python
 
-# 流程
-启动界面：命令启动器.pyw 启动 webview 来渲染界面，并且把 Python 函数提供给 JS 调用
+# 使用流程
+启动界面：双击命令启动器.pyw，启动 webview 来渲染界面，并且把 Python 函数提供给 JS 调用
 
 启动命令：在界面选择并输入相关参数，JS 调用 API，Python 启动命令
 
