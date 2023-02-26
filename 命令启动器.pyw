@@ -21,7 +21,7 @@ class JSApi:
         os.system(f'start powershell -command "{command};pause"')
         return command
 
-    def sqlmap(self, u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms, threads, forms, alert):
+    def sqlmap(self, u, r, batch, dbs, D, tables, T, columns, C, dump, random_agent, H, technique, string, sql_shell, tamper, o, current_user, level, data, skip_urlencode, shell, update, list_tampers, cookie, proxy, purge, v, m, g, second_url, dbms, threads, forms, alert, is_dba):
         command = "python 'D:\security tool\web渗透工具\sqlmap\sqlmap.py' "
 
         maps = {
@@ -32,7 +32,7 @@ class JSApi:
             '--data': data, '--skip-urlencode': skip_urlencode, '--shell': shell, '--update': update,
             '--list-tampers': list_tampers, '--cookie': cookie, '--proxy': proxy, '--purge': purge,
             '-v': v, '-m': m, '-g': g, '--second-url': second_url, '--dbms': dbms, 
-            '--threads': threads, '--forms': forms, '--alert': alert
+            '--threads': threads, '--forms': forms, '--alert': alert, '--is-dba': is_dba
         }
         for key, value in maps.items():
             match value:
