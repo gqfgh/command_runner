@@ -26,6 +26,8 @@
             </div>
 
             <div class="col-9 text-primary text-center">
+                <br>
+
                 <div class="mt-2" id="bp_chrome">
                     <button onclick="pywebview.api.bp_chrome()" class="btn btn-outline-primary">启动 bp 和 chrome</button>
                 </div>
@@ -190,8 +192,8 @@
                                 <label><input type="checkbox" id="sqlmap_shell" class="form-check-input"> sqlmap shell</label>
                                 <label><input type="checkbox" id="sqlmap_update" class="form-check-input"> 更新</label>
                                 <div class="input-group">
-                                    <span class="input-group-text">alert</span>
-                                    <input id="sqlmap_alert" class="form-control" value="python D:\24172\Documents\code\命令启动器\static\sqlmap_toast.py">
+                                    <span class="input-group-text">成功后提醒</span>
+                                    <input id="sqlmap_alert" class="form-control" value="python ./static/sqlmap_toast.py">
                                 </div>
                             </div>
                         </div>
@@ -229,6 +231,7 @@
                         <textarea id="flask_encode_res" class="form-control border border-success"></textarea>
                     </div>
                 </div>
+                <br><br><br><br><br><br><br><br><br><br>
             </div>
         </div>
     </div>
