@@ -34,7 +34,8 @@ class JSApi:
     def bp_chrome(self):
         bp = 'bp.pyw'
         chrome = 'chrome'
-        os.system(f'{bp} & {chrome}')
+        os.startfile(bp)
+        os.startfile(chrome)
 
     def dirsearch(self, u: str, e: str) -> str:
         command = "dirsearch "
