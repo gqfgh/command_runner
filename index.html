@@ -1,0 +1,266 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet" type="text/css" />
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/jquery-3.6.3.min.js"></script>
+    <script src="static/rabbit.js"></script>
+    <script src="func.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 导航栏 -->
+            <div class="col-3">
+                <nav class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sticky-top">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#bp_chrome">bp_chrome</a>
+                        <a class="nav-link" href="#dirsearch">dirsearch</a>
+                        <a class="nav-link" href="#sqlmap">sqlmap</a>
+                        <a class="nav-link" href="#flask_session_cookie_manager">flask_session_cookie_manager</a>
+                        <a class="nav-link" href="#rabbit_cipher">rabbit_cipher</a>
+                    </nav>
+                </nav>
+            </div>
+
+            <div class="col-9 text-primary text-center">
+                <br>
+
+                <div class="mt-2" id="bp_chrome">
+                    <button onclick="pywebview.api.bp_chrome()" class="btn btn-outline-primary">启动 bp 和 chrome</button>
+                </div>
+
+                <hr>
+
+                <div class="container" id="dirsearch" ondblclick="dirsearch()">
+                    <h3>dirsearch</h3>
+                    <div class="input-group">
+                        <span class="input-group-text">url</span>
+                        <input id="dirsearch_u" class="form-control">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">后缀</span>
+                        <input id="dirsearch_e" placeholder="php, aspx, jsp, html, js" class="form-control">
+                    </div>
+                    <button onclick="dirsearch()" class="btn btn-outline-primary mt-2 mb-2">启动 dirsearch</button>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text --bs-success-text">详细命令行</span>
+                        <textarea id="dirsearch_r" aria-label="详细命令行" class="form-control border border-success"></textarea>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container" id="sqlmap" ondblclick="sqlmap()">
+                    <h3>sqlmap</h3>
+                    <select id="sqlmap_v" class="mt-2 mb-4 form-select text-center">
+                        <option value="">选择输出详细度</option>
+                        <option value="2">2 显示 debug</option>
+                        <option value="3">3 显示 payload</option>
+                        <option value="4">4 显示 请求头</option>
+                        <option value="5">5 显示 响应头</option>
+                        <option value="6">6 显示 响应体</option>
+                    </select>
+
+                    <div class="row">
+                        <div class="col-6">目标
+                            <div class="input-group">
+                                <span class="input-group-text">url</span>
+                                <input id="sqlmap_u" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">urls.txt</span>
+                                <input id="sqlmap_m" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">请求文件</span>
+                                <input id="sqlmap_r" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">谷歌搜索</span>
+                                <input id="sqlmap_g" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-6">请求
+                            <select id="sqlmap_proxy" class="form-select text-center">
+                                <option value="">选择代理</option>
+                                <option value="http://127.0.0.1:7890">本地 7890 代理</option>
+                                <option value="http://127.0.0.1:8080">本地 8080 代理</option>
+                            </select>
+                            <label><input type="checkbox" id="sqlmap_random_agent" class="form-check-input" checked> 随机 UA</label>
+                            <label><input type="checkbox" id="sqlmap_skip_urlencode" class="form-check-input"> 跳过 url 编码</label>
+                            <div class="input-group">
+                                <span class="input-group-text">请求头</span>
+                                <input id="sqlmap_H" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">post 参数</span>
+                                <input id="sqlmap_data" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">cookie</span>
+                                <input id="sqlmap_cookie" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-6">优化
+                            <select id="sqlmap_threads" class="form-select text-center">
+                                <option value="">选择线程</option>
+                                <option value="10">10 线程</option>
+                            </select>
+                            <label><input type="checkbox" id="sqlmap_o" class="form-check-input" checked> 开启优化</label>
+                        </div>
+                        <div class="col-6">注入
+                            <select id="sqlmap_dbms" class="form-select text-center">
+                                <option value="">选择数据库类型</option>
+                                <option value="mysql">mysql</option>
+                            </select>
+                            <div class="input-group">
+                                <span class="input-group-text">tamper 脚本</span>
+                                <input id="sqlmap_tamper" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-6">检测
+                            <select id="sqlmap_level" class="form-select text-center">
+                                <option value="">选择 level</option>
+                                <option value="2">level2：增加 cookie 注入</option>
+                                <option value="3">level3：增加 UA，referer 注入</option>
+                                <option value="5">level5</option>
+                            </select>
+                            <div class="input-group">
+                                <span class="input-group-text">判断成功的字符串</span>
+                                <input id="sqlmap_string" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-6">技术
+                            <br>
+                            <select id="sqlmap_technique" class="form-select text-center">
+                                <option value="">选择注入技术</option>
+                                <option value="B">布尔盲注</option>
+                                <option value="U">联合查询</option>
+                                <option value="E">报错注入</option>
+                                <option value="S">堆叠注入</option>
+                                <option value="T">时间盲注</option>
+                                <option value="Q">嵌套注入（子查询）</option>
+                            </select>
+                            <div class="input-group">
+                                <span class="input-group-text">二次注入获取结果</span>
+                                <input id="sqlmap_second_url" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-6">枚举
+                            <br>
+                            <label><input type="checkbox" id="sqlmap_current_user" class="form-check-input"> 当前用户</label>
+                            <label><input type="checkbox" id="sqlmap_is_dba" class="form-check-input" checked> 是否是管理员</label>
+                            <label><input type="checkbox" id="sqlmap_dbs" class="form-check-input"> 所有库</label>
+                            <label><input type="checkbox" id="sqlmap_tables" class="form-check-input"> 所有表</label>
+                            <label><input type="checkbox" id="sqlmap_columns" class="form-check-input"> 所有列</label>
+                            <label><input type="checkbox" id="sqlmap_dump" class="form-check-input"> 下载数据</label>
+                            <label><input type="checkbox" id="sqlmap_sql_shell" class="form-check-input"> sql shell</label>
+                            <div class="input-group">
+                                <span class="input-group-text">指定库</span>
+                                <input id="sqlmap_D" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">指定表</span>
+                                <input id="sqlmap_T" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">指定列</span>
+                                <input id="sqlmap_C" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-6">一般设置
+                            <br>
+                            <label><input type="checkbox" id="sqlmap_batch" class="form-check-input" checked> batch</label>
+                            <label><input type="checkbox" id="sqlmap_forms" class="form-check-input"> 解析表单</label>
+                            <div>杂项
+                                <br>
+                                <label><input type="checkbox" id="sqlmap_list_tampers" class="form-check-input"> 列出可用 tamper 脚本</label>
+                                <label><input type="checkbox" id="sqlmap_purge" class="form-check-input"> 清理缓存</label>
+                                <label><input type="checkbox" id="sqlmap_shell" class="form-check-input"> sqlmap shell</label>
+                                <label><input type="checkbox" id="sqlmap_update" class="form-check-input"> 更新</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">成功后提醒</span>
+                                    <input id="sqlmap_alert" class="form-control" value="python ./static/sqlmap_toast.py">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="sqlmap()" class="btn btn-outline-primary  mt-2 mb-2">启动 sqlmap</button>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">详细命令行</span>
+                        <textarea id="sqlmap_res" class="form-control border border-success"></textarea>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container text-center" id="flask_session_cookie_manager">
+                    <h3>flask_session_cookie_manager</h3>
+                    <div class="input-group">
+                        <span class="input-group-text">session 或者要编码的字典</span>
+                        <input id="flask_text" class="form-control w-75">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">key</span>
+                        <input id="flask_key" class="form-control w-75">
+                    </div>
+                    <button onclick="flask_decode()" class="btn btn-outline-primary mt-2 mb-2">解码</button>
+                    <button onclick="flask_encode()" class="btn btn-outline-primary mt-2 mb-2">编码</button>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">解码命令</span>
+                        <textarea id="flask_decode_res" class="form-control border border-success"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">编码命令</span>
+                        <textarea id="flask_encode_res" class="form-control border border-success"></textarea>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container text-center" id="rabbit_cipher">
+                    <h3>rabbit_cipher</h3>
+                    <div class="input-group">
+                        <span class="input-group-text">明文或密文</span>
+                        <textarea id="rabbit_text" class="form-control border border-success" rows="10"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">key</span>
+                        <input id="rabbit_key" class="form-control w-75">
+                    </div>
+                    <button onclick="rabbit_encrypt()" class="btn btn-outline-primary mt-2 mb-2">加密</button>
+                    <button onclick="rabbit_decrypt()" class="btn btn-outline-primary mt-2 mb-2">解密</button>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">结果</span>
+                        <textarea id="rabbit_res" class="form-control border border-success" rows="10"></textarea>
+                    </div>
+                </div>
+
+
+                <br><br><br><br><br><br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

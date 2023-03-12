@@ -1,0 +1,20 @@
+hr {
+    border-top: 3px solid rgb(70, 135, 227);
+}
+
+div.input-group {
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+}
+
+
+label {
+    color: black;
+    margin-right: 10px!important;
+}
+
+select {
+    width: auto!important;
+    margin: auto;
+    margin-top: 10px;
+}

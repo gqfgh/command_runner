@@ -85,7 +85,7 @@ class JSApi:
 
 window = webview.create_window(
     title='命令启动器',
-    url='gui.html',
+    url='index.html',
     js_api=JSApi(),
     text_select=1,  # 文本可选择
     zoomable=True,  # 开启缩放
